@@ -1,0 +1,39 @@
+<div *blockUI="'lista-pessoas'">
+  <p-table [value]="pessoas" #grid
+    [lazy]="true" [totalRecords]="registros" (onLazyLoad)="handleLazyLoadCall($event)"
+  [paginator]="true" [rows]="size" responsiveLayout="scroll">
+
+  <ng-template pTemplate="emptymessage">
+    <tr><td>Nenhuma pessoa encontrada</td></tr>
+  </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nome</th>
+            <th>Apelido</th>
+            <th>Time do Coração</th>
+            <th>Cpf</th>
+            <th>Hobbie</th>
+            <th>Cidade</th>
+            <th>Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-pessoas>
+        <tr>
+            <td>{{pessoas.nome}}</td>
+            <td>{{pessoas.apelido}}</td>
+            <td>{{pessoas.timeCoracao}}</td>
+            <td>{{pessoas.cpf}}</td>
+            <td>{{pessoas.hobbie}}</td>
+            <td>{{pessoas.cidadeDTO.nome}}</td>
+            <td class="acoes">
+              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/pessoas', pessoas.id]"></button>
+              <button pButton class="p-button-danger" icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top"
+              (click)="pessoa2BDeleted(pessoas)"></button>
+              <button pButton class="p-button-secondary" icon="pi pi-file-pdf"  pTooltip="Arquivo Pdf" tooltipPosition="top"
+              (click)="pessoa2Pdf(pessoas)"></button>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

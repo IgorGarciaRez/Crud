@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #3d3d3d;
+}
+
+.white{
+  color: #fff;
+}
+
+/*MENU_____________*/
+.nav, .menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  display: inline-flex;
+  position: relative;
+  background-color: #fff;
+  padding: 20px 10px;
+  transition: 0.5s;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  width: 0;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.nav input:checked ~ .menu {
+  width: 500px;
+}
+
+.menu li {
+  list-style: none;
+  margin: 0 10px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: 0.5s;
+}
+
+.menu li a:hover {
+  color: #000000;
+}
+
+.nav input {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.nav .span-nav {
+  position: absolute;
+  left: 20px;
+  width: 30px;
+  height: 2px;
+  border-radius: 50px;
+  background-color: #2196F3;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.nav input:checked ~ .span-nav {
+  background-color: #f97474;
+}
+
+.nav input:checked:hover ~ .span-nav {
+  background-color: #e24949;
+}
+
+.nav .span-nav:nth-child(2) {
+  transform: translateY(-8px);
+}
+
+.nav input:checked ~ .span-nav:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+.nav .span-nav:nth-child(3) {
+  transform: translateY(8px);
+}
+
+.nav input:checked ~ .span-nav:nth-child(3) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.borda-nav{
+  border-bottom: 1px solid #e5e5e5;
+}
+/*FIM MENU_______*/
+
+
+label{
+  font-weight: 600;
+}
+
+.container{
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.acoes button{
+  margin-right: 10px;
+}
+
+.botao-cadastro{
+  margin-right: 10px;
+}
+
+.mensagem-erro{
+  color: #ff0000;
+  font-size: small;
+}
+
+.botao-xls{
+  align-self: center;
+  text-align: right;
+}
+
+/*BLOCK UI*/
+.block-ui-wrapper{
+  background: rgba(0, 0, 0, 0.20)!important;
+}

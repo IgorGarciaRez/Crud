@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <style>
+            table{
+                width: 100%;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <td><span th:text="${id}"></span></td>
+        </tr>
+        <tr>
+            <th>Nome</th>
+            <td><span th:text="${nome}"></span></td>
+        </tr>
+        <tr>
+            <th>Cpf</th>
+            <td><span th:text="${cpf}"></span></td>
+        </tr>
+        <tr>
+            <th>Apelido</th>
+            <td><span th:text="${apelido}"></span></td>
+        </tr>
+        <tr>
+            <th>Time do Coração</th>
+            <td><span th:text="${timeCoracao}"></span></td>
+        </tr>
+        <tr>
+            <th>Hobbie</th>
+            <td><span th:text="${hobbie}"></span></td>
+        </tr>
+        <tr>
+            <th>Cidade</th>
+            <td><span th:text="${cidade}"></span></td>
+        </tr>
+
+    </table>
+    </body>
+</html>

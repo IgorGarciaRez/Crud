@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="grid">
+
+    <div class="col-12">
+      <h1>Cidades</h1>
+    </div>
+
+    <form autocomplete="off">
+
+      <div class="col-12 p-fluid">
+        <label>Nome</label>
+        <input pInputText type="search" name="nome" [(ngModel)]="filtro.nome">
+      </div>
+
+      <div class="col-12 p-fluid">
+        <label style="display: block;">Estado</label>
+        <p-dropdown [required]="true" [filter]="true" [options]="estados" [(ngModel)]="estadoSelected" #estado="ngModel" name="estados" optionLabel="name" placeholder="Selecione"></p-dropdown>
+      </div>
+
+      <div class="col-12">
+        <button pButton type="button" class="p-button-info" (click)="listar(0);">Pesquisar</button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <app-tabela-cidades (onLazyLoad)="listar($event)"
+    (cidadeDelete)="deletar($event)" [filtro]="filtro" [registros]="totalRegistros"
+    [cidades]="cidades" [size]="pageable.size"></app-tabela-cidades>
+
+  <div class="col-12">
+    <a pButton label="Nova Cidade" routerLink="/cidades/new"></a>
+  </div>
+
+</div>
+

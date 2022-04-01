@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="grid">
+
+    <div class="col-8">
+      <h1>Pessoas</h1>
+    </div>
+    <div class="col-4 botao-xls">
+      <a pButton label="Gerar XLS" (click)="xls()"></a>
+    </div>
+
+
+    <div class="col-12 p-fluid">
+      <label>Nome</label>
+      <input pInputText type="text" name="nome" [(ngModel)]="filtro.nome">
+    </div>
+
+    <div class="col-12">
+      <label style="display: block;">CPF</label>
+      <input pInputText type="text" name="cpf" [(ngModel)]="filtro.cpf">
+    </div>
+
+    <div class="col-12 p-fluid">
+      <label>Nome da Cidade</label>
+      <input pInputText type="text" name="cidade" [(ngModel)]="filtro.cNome">
+    </div>
+
+    <div class="col-12">
+      <button pButton type="button" class="p-button-info" (click)="listar(0)">Pesquisar</button>
+    </div>
+
+  </div>
+
+  <app-tabela-pessoas
+  (onLazyLoad)="listar($event)" (pessoaDelete)="deletar($event)" (pessoaToPdf)="pdf($event)"
+  [filtro]="filtro" [registros]="totalRegistros" [pessoas]="pessoas"
+  [size]="pageable.size"></app-tabela-pessoas>
+
+  <div class="col-12">
+    <a pButton label="Nova Pessoa" routerLink="/pessoas/new"></a>
+  </div>
+
+</div>

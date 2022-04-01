@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202201181445-2" author="Igor">
+        <createTable remarks="Tabela para a manipulação de cidades" tableName="cidade">
+            <column remarks="Id, identificador unico de cada cidade" name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cidade"/>
+            </column>
+            <column remarks="Nome de cada cidade" name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column remarks="Quantidade de habitantes da cidade, pode ser nulo" name="qtd_habitantes" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Estado onde se encontra a cidade" name="estado" type="varchar(2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202201181445-3" author="Igor">
+        <addUniqueConstraint  columnNames="cpf"
+                              tableName="pessoa"/>
+        <addUniqueConstraint  columnNames="nome"
+                              tableName="cidade"/>
+    </changeSet>
+
+    <changeSet id="202201181452-4" author="Igor">
+        <addForeignKeyConstraint  baseColumnNames="cidade_id"
+                                  baseTableName="pessoa"
+                                  constraintName="fk_pessoa_cidade_id"
+                                  referencedColumnNames="id"
+                                  referencedTableName="cidade"/>
+    </changeSet>
+
+
+</databaseChangeLog>

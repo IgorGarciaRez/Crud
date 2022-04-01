@@ -1,0 +1,55 @@
+<div *blockUI="'cadastro-pessoas'">
+  <div class="container">
+    <form autocomplete="off" #pessoaForm="ngForm" (ngSubmit)="salvar(pessoaForm)">
+
+      <div class="grid">
+
+        <div class="col-12">
+          <h1>{{ editando ? 'Editar' : 'Nova' }} Pessoa</h1>
+        </div>
+
+        <div class="col-12 p-fluid">
+          <label>Nome*</label>
+          <input pInputText type="text" [(ngModel)]="pessoa.nome" #nome="ngModel" name="nome" required minlength="3">
+          <app-message [control]="nome.control" error="required" text="Informe o nome"></app-message>
+          <app-message [control]="nome.control" error="minlength" text="O nome precisa conter no mínimo {{nome.errors?.['minlength']?.requiredLength }} caracteres"></app-message>
+        </div>
+
+        <div class="col-12 md:col-6 p-fluid">
+          <label>Apelido</label>
+          <input pInputText [(ngModel)]="pessoa.apelido" name="apelido" type="text">
+        </div>
+
+        <div class="col-12 md:col-6 p-fluid">
+          <label>Time do Coração</label>
+          <input pInputText [(ngModel)]="pessoa.timeCoracao" name="timeCoracao" type="text">
+        </div>
+
+        <div class="col-12 md:col-6 p-fluid">
+          <label>CPF*</label>
+          <input pInputText type="text" pattern="[0-9]+" [(ngModel)]="pessoa.cpf" name="cpf" maxlength="11" minlength="11" ngModel #cpf="ngModel" name="cpf" [required]="true" placeholder="000.000.000-00">
+          <app-message [control]="cpf.control" error="required" text="Informe o CPF"></app-message>
+        </div>
+
+        <div class="col-12 md:col-6 p-fluid">
+          <label>Hobbie</label>
+          <input pInputText [(ngModel)]="pessoa.hobbie" name="hobbie" type="text">
+        </div>
+
+        <div class="col-12 p-fluid"*blockUI="'lista-cidades-dropdown'">
+          <label>Cidades*</label>
+          <p-dropdown [filter]="true" [options]="cidadesD" [(ngModel)]="cidadeSelecionada" optionLabel="nome" #cidade="ngModel" name="cidade" [required]="true" placeholder="Selecione"></p-dropdown>
+          <app-message [control]="cidade.control" error="required" text="Selecione uma cidade"></app-message>
+        </div>
+
+        <div class="col-12">
+          <button [disabled]="pessoaForm.invalid" pButton type="submit" label="{{ editando ? 'Atualizar' : 'Adicionar' }} " class="botao-cadastro"></button>
+          <button pButton type="button" label="{{editando? 'Novo':'Limpar'}}" class="botao-cadastro" (click)="novo(pessoaForm)"></button>
+          <a routerLink="/pessoas">Voltar para consulta</a>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+</div>

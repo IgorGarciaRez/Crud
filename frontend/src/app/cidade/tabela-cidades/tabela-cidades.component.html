@@ -1,0 +1,32 @@
+<div *blockUI="'lista-cidades'">
+  <p-table [value]="cidades" #grid
+    [lazy]="true" [totalRecords]="registros" (onLazyLoad)="handleLazyLoadCall($event)"
+  [paginator]="true" [rows]="size" responsiveLayout="scroll">
+
+    <ng-template pTemplate="emptymessage">
+      <tr><td>Nenhuma cidade encontrada</td></tr>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nome</th>
+            <th>Habitantes</th>
+            <th>Estado</th>
+            <th>Ações</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-cidade>
+        <tr>
+            <td>{{cidade.nome}}</td>
+            <td>{{cidade.qtdHabitantes | number}}</td>
+            <td>{{cidade.estado}}</td>
+            <td class="acoes">
+              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/cidades', cidade.id]"></button>
+              <button pButton class="p-button-danger" icon="pi pi-trash"  pTooltip="Excluir" tooltipPosition="top"
+              (click)="saveCidade2bDeleted(cidade)"></button>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>

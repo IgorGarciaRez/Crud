@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="202201181445-1" author="Igor">
+        <createTable remarks="Tabela pessoa para manipular pessoas" tableName="pessoa">
+            <column remarks="Id, identificador unico de cada pessoa" name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_pessoa"/>
+            </column>
+            <column remarks="Nome da pessoa" name="nome" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column remarks="Apelido da pessoa, pode ser nulo" name="apelido" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Time de coração da pessoa, pode ser nulo" name="time_coracao" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Cpf da pessoa" name="cpf" type="varchar(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column remarks="Hobbies da pessoa, podem ser nulos" name="hobbie" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column remarks="Cidade da pessoa" name="cidade_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
